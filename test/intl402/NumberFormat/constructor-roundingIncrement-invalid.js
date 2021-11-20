@@ -29,3 +29,15 @@ assert.throws(RangeError, function() {
 assert.throws(RangeError, function() {
   new Intl.NumberFormat([], {roundingIncrement: 5001});
 }, '5001');
+
+assert.throws(RangeError, function() {
+  new Intl.NumberFormat([], {roundingIncrement: 2, roundingPriority: 'morePrecision'});
+}, '2, roundingType is "morePrecision"');
+
+assert.throws(RangeError, function() {
+  new Intl.NumberFormat([], {roundingIncrement: 2, roundingPriority: 'lessPrecision'});
+}, '2, roundingType is "lessPrecision"');
+
+assert.throws(RangeError, function() {
+  new Intl.NumberFormat([], {roundingIncrement: 2, minimumSignificantDigits: 1});
+}, '2, roundingType is "significantDigits"');
